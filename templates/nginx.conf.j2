@@ -27,8 +27,19 @@ http {
 
         server {
 
-            include {{ nginx_conf_dir }}/conf.d/*.conf;
-            include {{ nginx_conf_dir }}/sites-enabled/*;
+          server_name {{ nginx_server_name }};
+          root {{ nginx_root }};
+          include {{ nginx_conf_dir }}/conf.d/*.conf;
+          include {{ nginx_conf_dir }}/sites-enabled/*;
+
+        }
+
+        server {
+
+          server_name {{ nginx_server_name_2 }};
+          root {{ nginx_root_2 }};
+          include {{ nginx_conf_dir }}/conf.d/*.conf;
+          include {{ nginx_conf_dir }}/sites-enabled/*;
 
         }
 
